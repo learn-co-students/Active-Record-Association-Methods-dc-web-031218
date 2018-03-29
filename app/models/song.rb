@@ -10,11 +10,10 @@ class Song < ActiveRecord::Base
 
   def drake_made_this
     # when this method is called it should assign the song's artist to Drake
-   	drake = Artist.all.map do |artist|
+   	Artist.all.each do |artist|
    		if artist == drake
    		 self.artist = artist
    		end
-   	end.flatten[0]
-   	self.artist
+   	end
   end
 end
