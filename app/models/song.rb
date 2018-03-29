@@ -10,10 +10,12 @@ class Song < ActiveRecord::Base
 
   def drake_made_this
     # when this method is called it should assign the song's artist to Drake
-   	Artist.all.each do |artist|
-   		if artist == drake
-   		 self.artist = artist
-   		end
-   	end
+   	if Artist.find_by(name: "Drake") == nil
+   		drake = Artist.create(name: "Drake")
+   		self.artist = drake
+   	else
+  		drake = Artist.find_by(drake)
+  		self.artist = drake
+  	end
   end
 end
